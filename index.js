@@ -8,7 +8,31 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (dates, data) => {
+  const list = [];
+  for (let i = 0; i < dates.length; i++) {
+    if (data == null) {
+      getDate(list, dates[i]);
+    } else {
+      getDateData(list, dates[i], i, data);
+    }
+  }
+  return list.sort().join(" - ");
+};
+
+const getDate = (list, dates) => {
+  return list.push(epochTime(dates));
+};
+
+const getDateData = (list, dates, index, data) => {
+  if (index == data) {
+    list.push(epochTime(dates));
+  }
+};
+
+const epochTime = (Time) => {
+  return Math.floor(Date.parse(Time) / 1000);
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
